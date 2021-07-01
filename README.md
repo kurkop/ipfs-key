@@ -30,6 +30,21 @@ $ ipfs-key -bitsize=4096 > my-rsa4096.key
 $ ipfs-key -type=ed25519 > my-ed.key
 ```
 
+## Kubernetes
+ipfs-key creates a public id and a secret key (hex). This means you should encrypt it to base64.
+
+```bash
+ipfs-key -bitsize=4096 | base64
+```
+
+Now, if you want to add that secret to kubernetes *you must apply base64 again*.
+
+```bash
+echo "Last value" | base64
+```
+
+So, you can add it as Kubernetes secret.
+
 ## Contribute
 
 PRs accepted.
